@@ -1,0 +1,68 @@
+<!DOCTYPE html >
+<html>
+<head>
+    
+    <script src="../../libs/RGraph.common.core.js.lib" ></script>
+    <script src="../../libs/RGraph.common.dynamic.js.lib" ></script>
+    <script src="../../libs/RGraph.common.tooltips.js.lib" ></script>
+    <script src="../../libs/RGraph.pie.js.lib" ></script>
+    <script src="../../libs/RGraph.pie.js.lib" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+
+    <title>A basic Pie chart</title>
+    
+    <meta name="description" content="A basic Pie chart" />
+</head>
+<body>
+
+
+    <canvas id="cvs" width="250" height="150">[No canvas support]</canvas>
+    
+    <script>
+            
+        window.onload = function (){
+    	Ti.App.addEventListener("graphData:fromTitanium", function(e) {
+			var theString = e.message;
+       		var array = theString.split(',');
+			usage = (array[0]);
+			total = (array[1]);
+			usage = parseInt(usage);
+			total = parseInt(total);
+			//testing the variables were received
+			//document.write(usage + ' ');
+			//document.write(total + ' ');
+			drawGraph(usage, total);
+			drawGraph(usage, total);
+			drawGraph(usage, total);
+		});
+        
+
+        };
+        function drawGraph(used, total){
+        	used = 254;
+        	total = 1024;
+        
+            var usagePercent = used/total*100;
+            usagePercent = Math.round(usagePercent * 100) / 100;
+            var remainingPercent = 100 - usagePercent;
+            
+            var pie = new RGraph.Pie('cvs', used, total);
+            pie.Set('chart.labels', ['Data used','Data left']);
+            pie.Set('chart.tooltips', [usagePercent.toString() + '%', remainingPercent.toString() + '%']);
+            pie.Set('chart.tooltips.event', 'onmousemove');
+            pie.Set('chart.colors', ['#EC0033','#A0D300']);
+            pie.Set('chart.strokestyle', 'white');
+            pie.Set('chart.linewidth', 3);
+            pie.Set('chart.shadow', true);
+            pie.Set('chart.shadow.offsetx', 2);
+            pie.Set('chart.shadow.offsety', 2);
+            pie.Set('chart.shadow.blur', 3);
+            pie.Set('chart.exploded', 7);
+
+            
+            pie.Draw();
+        };
+    </script>
+
+</body>
+</html>

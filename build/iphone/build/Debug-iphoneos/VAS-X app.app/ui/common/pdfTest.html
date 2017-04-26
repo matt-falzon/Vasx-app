@@ -1,0 +1,24 @@
+<html>
+    <head>
+		<script type="text/javascript" src="../../libs/jspdf.js" ></script>
+    </head>
+    <body>
+        <script>
+        	var amount = 2;
+            Ti.App.addEventListener("amount", function(e) {
+            amount = e.message;
+                document.write(amount);
+            });
+            
+            var doc = new jsPDF();
+			doc.text(20, 20, 'Hello world!');
+			doc.text(20, 30, 'This page will print bill into into PDF');
+			doc.addPage();
+			doc.text(20, 20, 'New Page');
+			doc.text(amount);
+
+			// Output as Data URI
+			doc.output('datauri');
+        </script>
+    </body>
+</html>

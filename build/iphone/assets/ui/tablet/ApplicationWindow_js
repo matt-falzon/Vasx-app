@@ -1,0 +1,1 @@
+function ApplicationWindow(){var e=require("ui/tablet/login"),t=Ti.UI.createWindow({backgroundColor:"white"}),a=new e;return t.add(a),t}exports=ApplicationWindow;

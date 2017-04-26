@@ -1,0 +1,78 @@
+<!DOCTYPE html >
+<html>
+<head>
+    
+    <script src="../../libs/RGraph.common.core.js.lib" ></script>
+    <script src="../../libs/RGraph.common.dynamic.js.lib" ></script>
+    <script src="../../libs/RGraph.common.tooltips.js.lib" ></script>
+    <script src="../../libs/RGraph.common.effects.js" ></script>
+    <script src="../../libs/RGraph.bar.js" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+
+    <title>Bar chart</title>
+    
+    <meta name="description" content="Bar chart" />
+</head>
+<body bgcolor="#96CF80">
+
+<font size="3" color="#96CF80">This is some text!</font>
+    <canvas id="cvs" width="720" height="260">[No canvas support]</canvas>
+    
+    <script>
+    
+    
+    		var data = [5,2,5,10,3,9,6,5];
+
+			
+			Ti.App.addEventListener("barData", function(e) {
+				data = e.message;				
+				drawGraph(data);	
+			});
+
+			drawGraph(data);
+
+			
+        window.onload = function (){
+			Ti.App.addEventListener("barData", function(e) {
+				data = e.message;
+				drawGraph(data);	
+			});
+        };
+        
+        
+        function drawGraph(data){
+        	RGraph.ObjectRegistry.Clear();
+			RGraph.Reset(document.getElementById("cvs"));
+			RGraph.ObjectRegistry.Clear("cvs");
+			RGraph.ObjectRegistry.Remove(document.getElementById("cvs"));
+        	RGraph.Clear(document.getElementById("cvs"));
+            var bar = new RGraph.Bar('cvs', [[data[0]],[data[1]],[data[2]],[data[3]],[data[4]],[data[5]],[data[6]],[data[7]]])
+        	.Set('labels', ['1/8', '2/8', '3/8', '4/8','5/8', '6/8', '7/8', '8/8'])
+            .Set('ymax', 10)
+            .Set('chart.tooltips', ['day 1','day 2','day 3','day 4','day 5' ,'day 6','day 7', 'day 8'])
+            .Set('strokestyle', 'white')
+            .Set('linewidth', 2)
+            .Set('shadow', true)
+            .Set('shadow.offsetx', 0)
+            .Set('shadow.offsety', 0)
+            .Set('shadow.blur', 10)
+            .Set('hmargin.grouped', 2)
+            .Set('units.pre', '�')
+            .Set('title', 'Weekly Data')
+            .Set('gutter.bottom', 20)
+            .Set('gutter.left', 40)
+            .Set('gutter.right', 15)
+            .Set('colors', ['#50C223'])
+            .Set('background.grid.autofit.numhlines', 5)
+            .Set('background.grid.autofit.numvlines', 4)
+            
+            // This draws the chart
+            RGraph.Effects.Bar.Grow(bar);
+ 
+        }
+    </script>
+
+
+
+</body>
+</html>

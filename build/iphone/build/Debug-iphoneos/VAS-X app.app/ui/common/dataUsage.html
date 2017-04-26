@@ -1,0 +1,118 @@
+<!DOCTYPE html >
+<html>
+<head>
+    
+    <script src="../../libs/RGraph.common.core.js.lib" ></script>
+    <script src="../../libs/RGraph.common.dynamic.js.lib" ></script>
+    <script src="../../libs/RGraph.common.tooltips.js.lib" ></script>
+    <script src="../../libs/RGraph.pie.js.lib" ></script>
+    <script src="../../libs/RGraph.common.effects.js" ></script>
+    <script src="../../libs/RGraph.bar.js" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+
+    <title>A basic Pie chart</title>
+    
+    <meta name="description" content="A basic Pie chart" />
+</head>
+<body bgcolor="#F2AE6B">
+
+<h1 style="color: #F2AE6B">AAAAAAAA</h1>
+    <canvas id="cvs" width="275" height="160">[No canvas support]</canvas>
+    
+    <script>
+    
+    		var usage;
+    		var total;
+			var animation = 0; 
+			
+			Ti.App.addEventListener("usage", function(e) {
+				usage = e.message;	
+				
+				Ti.App.addEventListener("total", function(e) {
+				total = e.message;
+				
+				var labels = ["Data used", "Data left"];
+				drawGraph(usage, total, labels);
+				});		
+			});
+
+			Ti.App.addEventListener("callUsage", function(e) {
+				usage = e.message;	
+				
+				Ti.App.addEventListener("callTotal", function(e) {
+				total = e.message;
+				
+				var labels = ["Mins used", "Mins left"];
+				drawGraph(usage, total, labels);
+				});		
+			});		
+
+			
+			Ti.App.addEventListener("jan", function(e) {
+			drawCalendar();
+			//document.write("A");
+			//theCalendar = [];
+			//theCalendar = e.message;
+			
+			//for(i >=0; i<theCalendar.length; i++)
+				//document.write(theCalendar[i]);
+				//document.write(theCalendar[0]);
+				//theCalendar = parseInt(theCalendar);
+				//var test = theCalendar[0];
+				//document.write(test.prototype.toString());
+			});			
+
+
+
+			
+        window.onload = function (){
+		
+			drawGraph(usage, total, labels);
+        };
+        
+        
+        //makes the graph
+        function drawGraph(used, total, labels){
+			RGraph.ObjectRegistry.Clear();
+			RGraph.Reset(cvs);
+			RGraph.ObjectRegistry.Remove(document.getElementById("cvs"));
+        	RGraph.Clear(document.getElementById("cvs"));
+        	var remaining = total-used;
+        	used = used / 2;
+        	remaining = remaining / 2;
+        	//puts data in array to graph
+        	var data = [];
+        	data.push(used);
+        	data.push(remaining);
+        	//creates tooltips for values in percent
+            var usageP = used/total*100;
+            usageP = Math.round(usageP* 100) / 50;
+            var remainingP = remaining/total*100;
+            remainingP = Math.round(remainingP* 100) / 50;
+            //creates graph
+            var pie = new RGraph.Pie('cvs', data);
+            pie.Set('chart.labels', labels);
+            pie.Set('chart.tooltips', [usageP.toString() + '%', remainingP.toString() + '%']);
+            pie.Set('chart.tooltips.event', 'onmousemove');
+            pie.Set('chart.colors', ['#EC0033','#A0D300']);
+            pie.Set('chart.strokestyle', 'white');
+            pie.Set('chart.linewidth', 3);
+            pie.Set('chart.shadow', true);
+            pie.Set('chart.shadow.offsetx', 2);
+            pie.Set('chart.shadow.offsety', 2);
+            pie.Set('chart.shadow.blur', 3);
+            pie.Set('chart.exploded', 7);
+			
+			if(animation%2==0)
+            	RGraph.Effects.Pie.RoundRobin(pie);
+            else
+            	RGraph.Effects.Pie.Implode(pie);
+            //pie.Draw();
+            animation++;
+        };
+
+        
+    </script>
+
+</body>
+</html>

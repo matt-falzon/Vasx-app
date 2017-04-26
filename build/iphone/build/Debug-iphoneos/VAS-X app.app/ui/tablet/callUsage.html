@@ -1,0 +1,119 @@
+<!DOCTYPE html >
+<html>
+<head>
+    
+    <script src="../../libs/RGraph.common.core.js.lib" ></script>
+    <script src="../../libs/RGraph.common.dynamic.js.lib" ></script>
+    <script src="../../libs/RGraph.common.tooltips.js.lib" ></script>
+    <script src="../../libs/RGraph.pie.js.lib" ></script>
+    <script src="../../libs/RGraph.common.effects.js" ></script>
+    <script src="../../libs/RGraph.bar.js" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+
+    <title>A basic Pie chart</title>
+    
+    <meta name="description" content="A basic Pie chart" />
+</head>
+<body bgcolor="#BDDBDB">
+
+<h1 style="color: #BDDBDB">AAAAAAAAA</h1>
+    <canvas id="cvs" width="340" height="240">[No canvas support]</canvas>
+    
+    <script>
+    
+    		var usage;
+    		var total;
+			var animation = 0; 
+			
+			Ti.App.addEventListener("usage", function(e) {
+				usage = e.message;	
+				
+				Ti.App.addEventListener("total", function(e) {
+				total = e.message;
+				
+				var labels = ["Data \n used", "Data \n left"];
+				drawGraph(usage, total, labels);
+				});		
+			});
+
+			Ti.App.addEventListener("callUsage", function(e) {
+				usage = e.message;	
+				
+				Ti.App.addEventListener("callTotal", function(e) {
+				total = e.message;
+				
+				var labels = ["Mins" + "\n" + "used", "Mins \n left"];
+				drawGraph(usage, total, labels);
+				});		
+			});		
+
+			Ti.App.addEventListener("timeleft", function(e) {
+				usage = e.message;	
+				
+				Ti.App.addEventListener("timetotal", function(e) {
+				total = e.message;
+				
+				var labels = ["time" + "\n" + "used", "time \n remaining"];
+				drawGraph(usage, total, labels);
+				});		
+			});	
+			
+			Ti.App.addEventListener("smsused", function(e) {
+				usage = e.message;	
+				
+				Ti.App.addEventListener("remaining", function(e) {
+				total = e.message;
+				
+				var labels = ["sms" + "\n" + "used", "sms \n left"];
+				drawGraph(usage, total, labels);
+				});		
+			});				
+			Ti.App.addEventListener("jan", function(e) {
+			drawCalendar();
+			//document.write("A");
+			//theCalendar = [];
+			//theCalendar = e.message;
+			
+			//for(i >=0; i<theCalendar.length; i++)
+				//document.write(theCalendar[i]);
+				//document.write(theCalendar[0]);
+				//theCalendar = parseInt(theCalendar);
+				//var test = theCalendar[0];
+				//document.write(test.prototype.toString());
+			});			
+
+drawGraph(usage, total, labels);
+
+			
+        window.onload = function (){
+			Ti.App.addEventListener("usage", function(e) {
+				usage = e.message;	
+				
+				Ti.App.addEventListener("total", function(e) {
+				total = e.message;
+				
+				var labels = ["Data used", "Data left"];
+				drawGraph(usage, total, labels);
+				});		
+			});
+        };
+        
+        
+        //makes the graph
+        function drawGraph(used, total, labels){
+            var pie = new RGraph.Pie('cvs', [4,3,2,6,8])
+                .Set('labels.sticks', true)
+                .Set('labels.sticks.length', 15)
+                .Set('labels', ['Robert','Louise','Peter','Kevin','Jack'])
+                .Set('tooltips', ['Robert','Louise','Peter','Kevin','Jack'])
+                .Set('radius', 100)
+                .Set('strokestyle', 'transparent')
+                .Set('exploded', [15])
+            RGraph.Effects.Pie.RoundRobin(pie);
+        };
+
+        
+    </script>
+
+</body>
+</html>

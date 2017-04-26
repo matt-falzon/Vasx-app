@@ -1,0 +1,3 @@
+dependencies: \
+  /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X\ app/build/iphone/Classes/ASI/Reachability.m \
+  /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X\ app/build/iphone/Classes/ASI/Reachability.h

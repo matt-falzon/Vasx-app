@@ -1,0 +1,42 @@
+Logfile initialized
+[INFO] logfile = /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X app/build.log
+[INFO] logfile = /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X app/build.log
+[DEBUG] /Users/Matt/Library/Application Support/Titanium/mobilesdk/osx/3.1.0.GA/android/builder.py emulator VAS-X app /Users/Matt/Documents/Android-SDK /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X app com.vasxapp.app 5 WVGA854 armeabi
+[DEBUG] /Users/Matt/Library/Application Support/Titanium/mobilesdk/osx/3.1.0.GA/android/builder.py simulator VAS-X app /Users/Matt/Documents/Android-SDK /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X app com.vasxapp.app 5 WVGA854
+[INFO] Launching Android emulator...one moment
+[INFO] Building VAS-X app for Android ... one moment
+[DEBUG] From: /Users/Matt/Documents/Android-SDK/tools/emulator
+[DEBUG] SDCard: /Users/Matt/.titanium/android2.sdcard
+[DEBUG] AVD ID: 5
+[DEBUG] AVD Skin: WVGA854
+[DEBUG] AVD ABI: armeabi
+[DEBUG] SDK: /Users/Matt/Documents/Android-SDK
+[INFO] Titanium SDK version: 3.1.0 (04/15/13 18:45 57634ef)
+[DEBUG] Waiting for device to be ready ...
+[INFO] Emulator is running.
+[TRACE] adb devices returned 1 devices/emulators
+[DEBUG] Device connected... (waited 0 seconds)
+[DEBUG] waited 0.120793 seconds on emulator to get ready
+[DEBUG] com.vasxapp.app installed? True
+[INFO] Fastdev server running, deploying in Fastdev mode
+[INFO] Copying CommonJS modules...
+[INFO] Copying project resources..
+[DEBUG] LiveView not enabled
+[INFO] Tiapp.xml unchanged, skipping class generation
+[DEBUG] Processing Android resource drawables
+[DEBUG] found drawable-long-land-hdpi splash screen at /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X app/Resources/android/images/res-long-land-hdpi/default.png
+[DEBUG] found drawable-long-land-ldpi splash screen at /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X app/Resources/android/images/res-long-land-ldpi/default.png
+[DEBUG] found drawable-long-port-hdpi splash screen at /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X app/Resources/android/images/res-long-port-hdpi/default.png
+[DEBUG] found drawable-long-port-ldpi splash screen at /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X app/Resources/android/images/res-long-port-ldpi/default.png
+[DEBUG] found drawable-notlong-land-hdpi splash screen at /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X app/Resources/android/images/res-notlong-land-hdpi/default.png
+[DEBUG] found drawable-notlong-land-ldpi splash screen at /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X app/Resources/android/images/res-notlong-land-ldpi/default.png
+[DEBUG] found drawable-notlong-land-mdpi splash screen at /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X app/Resources/android/images/res-notlong-land-mdpi/default.png
+[DEBUG] found drawable-notlong-port-hdpi splash screen at /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X app/Resources/android/images/res-notlong-port-hdpi/default.png
+[DEBUG] found drawable-notlong-port-ldpi splash screen at /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X app/Resources/android/images/res-notlong-port-ldpi/default.png
+[DEBUG] found drawable-notlong-port-mdpi splash screen at /Users/Matt/Documents/Titanium_Studio_Workspace/VAS-X app/Resources/android/images/res-notlong-port-mdpi/default.png
+[INFO] Re-launching application ... VAS-X app
+[INFO] Launching application ... VAS-X app
+[TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.vasxapp.app/.VasXAppActivity }
+
+[INFO] Relaunched VAS-X app ... Application should be running.
+[INFO] Android Emulator has exited

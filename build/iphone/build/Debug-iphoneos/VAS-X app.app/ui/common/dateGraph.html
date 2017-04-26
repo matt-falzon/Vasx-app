@@ -1,0 +1,63 @@
+<!DOCTYPE html >
+<html>
+<head>
+    
+    <script src="../../libs/RGraph.common.core.js.lib" ></script>
+    <script src="../../libs/RGraph.common.dynamic.js.lib" ></script>
+    <script src="../../libs/RGraph.common.tooltips.js.lib" ></script>
+    <script src="../../libs/RGraph.pie.js.lib" ></script>
+    <script src="../../libs/RGraph.common.effects.js" ></script>
+    <script src="../../libs/RGraph.bar.js" ></script>
+    <!--[if lt IE 9]><script src="../excanvas/excanvas.js"></script><![endif]-->
+
+    <title>A basic Pie chart</title>
+    
+    <meta name="description" content="A basic Pie chart" />
+</head>
+<body bgcolor="#E3E8E8">
+<h1 style="color: #E3E8E8">AAAAAAAAAAAA</h1>
+<h1 style="color: #E3E8E8">AAAAAAAAAAAA/h1>
+<h1 style="color: #E3E8E8">AAAAAAAAAAAA/h1>
+
+
+    <canvas id="cvs" width="250" height="150">[No canvas support]</canvas>
+    
+    <script>
+ window.onload = function ()
+        {
+            var bar8 = new RGraph.Bar('cvs', [14,16,18,19,13])
+            bar8.Set('labels', ['Jan', 'Feb', 'Mar', 'Apr', 'May']);
+            bar8.Set('tooltips', function (index)
+                                 {
+                                     var label = bar8.Get('chart.labels')[index];
+                                     return '<div style="text-align: center; font-weight: bold; font-size: 16pt">' + label + '</div><br  /><canvas id="tooltip_canvas" width="250" height="110"></canvas>';
+                                 });
+            RGraph.Effects.Bar.Grow(bar8);
+
+
+            /**
+            * The ontooltip event runs when a tooltip is shown and creates the Pie chart in the tooltip
+            */
+            bar8.ontooltip = function (obj)
+            {
+                var pie_data = [
+                                [80,75,65],
+                                [84,85,95],
+                                [43,54,85],
+                                [43,51,62],
+                                [74,75,65]
+                               ]
+                var tooltip = RGraph.Registry.Get('chart.tooltip');
+                var index   = tooltip.__index__;
+
+                var pie = new RGraph.Pie('tooltip_canvas', pie_data[index]);
+                pie.Set('labels', ['Work','Friend','Person']);
+                pie.Set('gutter.top', 10);
+                pie.Set('gutter.bottom', 25);
+                pie.Draw();
+            }
+        }
+    </script>
+
+</body>
+</html>
